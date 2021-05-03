@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "start": "next start"
   },
   "dependencies": {
     "@prisma/client": "^2.21.2",
@@ -19,10 +17,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/react": "^6.2.9",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "postcss": "^8.2.13",
