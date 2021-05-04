@@ -1,3 +1,4 @@
+import { Heading, Text } from '@chakra-ui/layout'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -12,14 +13,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <Heading fontSize="6xl" >
+          Welcome to <Text as="a" color="blue.400" href="https://nextjs.org">Chakra-ui!</Text>
+        </Heading>
 
-        <p className={styles.description}>
+        <Text lineHeight="10" fontSize="xl">
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
-        </p>
+        </Text>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
