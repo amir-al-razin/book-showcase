@@ -1,11 +1,6 @@
 import React from 'react';
 
 import { Button } from './Button';
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 553ce49419037627900233d9086da7c403d3fcda
 export default {
   title: 'Example/Button',
   component: Button,
