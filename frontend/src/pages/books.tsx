@@ -1,13 +1,10 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
-import Masonry from "react-masonry-css";
-import { Button } from "@chakra-ui/button";
-import { Box, Text } from "@chakra-ui/layout";
-import { Image } from "@chakra-ui/image";
-import Book from "../component/book/Book";
 
-interface BookTypes {
+import Masonry from "react-masonry-css";
+
+interface DataTypes {
   img_link: string;
   name: string;
   author: string;
@@ -15,10 +12,10 @@ interface BookTypes {
 }
 
 interface BooksProps {
-  data: Array<BookTypes>;
+  data: Array<DataTypes>;
 }
 
-const Books: React.FC<BooksProps> = ({ data }) => {
+export const Books: React.FC<BooksProps> = ({ data }) => {
   console.log;
 
   const breakpointColumnsObj = {
@@ -29,8 +26,17 @@ const Books: React.FC<BooksProps> = ({ data }) => {
   };
 
   // Convert array to JSX items
-  const AllBooks = data.map(({ img_link, name, author, id }) => (
-    <Book img_link={img_link} name={name} author={author} id={id} />
+  const allBooks = data.map(({ img_link, name, author, id }) => (
+    <div
+      key={id}
+      className="bg-gray-700 py-1 px-2 flex flex-col flex-nowrap rounded m-2"
+    >
+      <img src={img_link} className="  block rounded" alt={name} />
+      <div className="mt-2">
+        <h2 className="text-gray-200  text-lg font-bold">{name}</h2>
+        <h3 className="font-semibold text-gray-400">{author}</h3>
+      </div>
+    </div>
   ));
 
   return (
@@ -39,7 +45,7 @@ const Books: React.FC<BooksProps> = ({ data }) => {
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
     >
-      {AllBooks}
+      {allBooks}
     </Masonry>
   );
 };

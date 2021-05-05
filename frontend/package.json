@@ -16,7 +16,10 @@
     "@emotion/styled": "11",
     "@prisma/client": "^2.21.2",
     "autoprefixer": "9",
+<<<<<<< HEAD
     "framer-motion": "4",
+=======
+>>>>>>> 553ce49419037627900233d9086da7c403d3fcda
     "next": "10.2.0",
     "postcss": "7",
     "prisma": "^2.21.2",
