@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Heading fontSize="5xl" color="blue.200" >
+        <Heading fontSize="6xl"  >
           Welcome to <Text as="a" color="blue.400" href="https://nextjs.org">Chakra-ui!</Text>
         </Heading>
 
