@@ -9,5 +9,5 @@ export default {
 
 
 export const Primary = () => (
-  <Button>hello</Button>
+  <Button variantColor="purple" >hello</Button>
 );
