@@ -1,8 +1,9 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
+import { GetServerSideProps } from "next";
 
 import Masonry from "react-masonry-css";
+import Book from "../component/book/Book";
 
 interface DataTypes {
   img_link: string;
@@ -27,16 +28,7 @@ export const Books: React.FC<BooksProps> = ({ data }) => {
 
   // Convert array to JSX items
   const allBooks = data.map(({ img_link, name, author, id }) => (
-    <div
-      key={id}
-      className="bg-gray-700 py-1 px-2 flex flex-col flex-nowrap rounded m-2"
-    >
-      <img src={img_link} className="  block rounded" alt={name} />
-      <div className="mt-2">
-        <h2 className="text-gray-200  text-lg font-bold">{name}</h2>
-        <h3 className="font-semibold text-gray-400">{author}</h3>
-      </div>
-    </div>
+    <Book id={id} img_link={img_link} name={name} author={author} />
   ));
 
   return (
