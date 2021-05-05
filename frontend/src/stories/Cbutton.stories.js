@@ -7,10 +7,7 @@ export default {
   component: Button,
 };
 
-// const Template = (args) => <Button {...args}>asdf</Button></Button>;
 
 export const Primary = () => (
-  <Button color="blackAlpha.600"  size="lg" variant="solid">
-    Button
-  </Button>
+  <Button>hello</Button>
 );
