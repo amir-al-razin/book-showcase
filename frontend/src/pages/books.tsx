@@ -1,9 +1,10 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, NextPage } from "next";
 
 import Masonry from "react-masonry-css";
 import Book from "../component/book/Book";
+import Layout from "../component/layout/Layout";
 
 interface DataTypes {
   img_link: string;
@@ -16,29 +17,32 @@ interface BooksProps {
   data: Array<DataTypes>;
 }
 
-export const Books: React.FC<BooksProps> = ({ data }) => {
+const Books: NextPage<BooksProps> = ({ data }) => {
   console.log;
 
   const breakpointColumnsObj = {
     default: 5,
     1100: 4,
+    900:3,
     700: 2,
     500: 1,
   };
 
   // Convert array to JSX items
   const allBooks = data.map(({ img_link, name, author, id }) => (
-    <Book id={id} img_link={img_link} name={name} author={author} />
+    <Book id={id} key={id} img_link={img_link} name={name} author={author} />
   ));
 
   return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {allBooks}
-    </Masonry>
+    <Layout >
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {allBooks}
+      </Masonry>
+    </Layout>
   );
 };
 

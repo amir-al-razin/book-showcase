@@ -24,8 +24,9 @@ export const Book: React.FC<BookProps> = ({
     <>
       <Box
         key={id}
-        boxShadow="xl"
+        boxShadow="2xl"
         borderRadius="xl"
+        backgroundColor="gray.800"
         p="3"
         className=" flex flex-col flex-nowrap  m-2"
       >

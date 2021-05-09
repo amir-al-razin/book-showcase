@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
-import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 import { AppProps } from "next/app";
 
