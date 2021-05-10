@@ -17,32 +17,33 @@ import {
 
 // 2. Create the form
 const Form = ({ onCancel }) => {
-  const [bookName, setBookName] = useState("");
-  const [authorName, setAuthorName] = useState("");
-  const [language, setLanguage] = useState("");
-  const [is_translated, setIs_translated] = useState(false);
-  const [is_available, setIs_available] = useState(false);
+  const [bookData, setBookData] = useState({
+    name: "",
+    author: "",
+    language: "",
+    img_link: "",
+    is_translated: false,
+    is_available: false,
+  });
 
-  const [imageLink, setImageLink] = useState("");
+
 
   const handleBookData = async (
     event: React.FormEvent<HTMLInputElement | HTMLFormElement>
   ) => {
     event.preventDefault();
 
-      console.log(bookName,imageLink,is_translated)
+    console.log(bookData)
+
+   await fetch('/api/book', {
+      method: 'POST',
+      body: JSON.stringify(bookData)
+  })
+  
+  
+
+
     
-
-    return ;
-
-    setBookName("");
-    setAuthorName("");
-    setLanguage("");
-    setImageLink("");
-    setIs_translated(false);
-    setIs_translated(false);
-
-   
   };
 
   return (
@@ -54,21 +55,27 @@ const Form = ({ onCancel }) => {
           label="Book's name"
           id="book-name"
           defaultValue="John Doe"
-          onChange={({ target }) => setBookName(target.value)}
+          onChange={({ target }) =>
+            setBookData({ ...bookData, name: target.value })
+          }
         />
         <TextInput
           required
           label="Authors's name"
           id="authors-name"
           defaultValue="John Doe"
-          onChange={({ target }) => setAuthorName(target.value)}
+          onChange={({ target }) =>
+            setBookData({ ...bookData, author: target.value })
+          }
         />
         <TextInput
           required
           label="Language"
           id="language"
           defaultValue="John Doe"
-          onChange={({ target }) => setLanguage(target.value)}
+          onChange={({ target }) =>
+            setBookData({ ...bookData, language: target.value })
+          }
         />
 
         <TextInput
@@ -76,12 +83,22 @@ const Form = ({ onCancel }) => {
           label="Image Link"
           id="image-link"
           defaultValue="John Doe"
-          onChange={({ target }) => setImageLink(target.value)}
+          onChange={({ target }) =>
+            setBookData({ ...bookData, img_link: target.value })
+          }
         />
-        <Checkbox onChange={({ target }) => setIs_translated(target.checked)}>
+        <Checkbox
+          onChange={({ target }) =>
+            setBookData({ ...bookData, is_translated: target.checked })
+          }
+        >
           Translated
         </Checkbox>
-        <Checkbox onChange={({ target }) => setIs_available(target.checked)}>
+        <Checkbox
+          onChange={({ target }) =>
+            setBookData({ ...bookData, is_available: target.checked })
+          }
+        >
           Available
         </Checkbox>
 

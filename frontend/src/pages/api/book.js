@@ -8,7 +8,7 @@ export default async (req, res) => {
     data,
   });
 
-  console.log(createdBook);
+ 
 
   res.json(createdBook);
 };
