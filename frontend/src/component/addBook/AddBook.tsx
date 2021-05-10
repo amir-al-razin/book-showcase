@@ -26,24 +26,17 @@ const Form = ({ onCancel }) => {
     is_available: false,
   });
 
-
-
   const handleBookData = async (
     event: React.FormEvent<HTMLInputElement | HTMLFormElement>
   ) => {
     event.preventDefault();
 
-    console.log(bookData)
+    const response = await fetch("/api/book", {
+      method: "POST",
+      body: JSON.stringify(bookData),
+    });
 
-   await fetch('/api/book', {
-      method: 'POST',
-      body: JSON.stringify(bookData)
-  })
-  
-  
-
-
-    
+    return await response.json();
   };
 
   return (
@@ -134,6 +127,10 @@ const PopoverForm = () => {
             borderRadius="full"
             fontSize="20"
             size="md"
+            bgColor="gray.600"
+            _hover={{
+              bgColor: "gray.500",
+            }}
             icon={<EditIcon />}
           />
         </PopoverTrigger>
