@@ -7,13 +7,16 @@ import PopoverForm from "../addBook/AddBook";
 const RightHeader: React.FC = () => {
   return (
     <Stack direction="row" spacing={4} mx="4">
-      
-      <PopoverForm/>
+      <PopoverForm />
       <IconButton
         aria-label="add book"
         borderRadius="full"
         fontSize="20"
         size="md"
+        bgColor="gray.600"
+        _hover={{
+          bgColor: "gray.500",
+        }}
         icon={<MoonIcon />}
       />
 
@@ -22,6 +25,10 @@ const RightHeader: React.FC = () => {
         borderRadius="full"
         fontSize="20"
         size="md"
+        bgColor="gray.600"
+        _hover={{
+          bgColor: "gray.500",
+        }}
         icon={<EmailIcon />}
       />
     </Stack>
