@@ -16,7 +16,8 @@ const MiddleHeader: React.FC = () => {
         backgroundColor="gray.600"
         fontWeight="semibold"
         variant="filled"
-        _hover={{backgroundColor:'transparent'}}
+        _hover={{backgroundColor:'gray.600'}}
+       
       />
     </InputGroup>
   );
