@@ -18,7 +18,7 @@ interface BooksProps {
 }
 
 const Books: NextPage<BooksProps> = ({ data }) => {
-  console.log;
+  
 
   const breakpointColumnsObj = {
     default: 5,

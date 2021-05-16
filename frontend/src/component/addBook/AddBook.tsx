@@ -30,6 +30,8 @@ const Form = ({ onCancel }) => {
     event: React.FormEvent<HTMLInputElement | HTMLFormElement>
   ) => {
     event.preventDefault();
+    
+    console.log(bookData)
 
     const response = await fetch("/api/book", {
       method: "POST",
