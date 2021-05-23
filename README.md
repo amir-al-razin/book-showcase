@@ -9,3 +9,5 @@
 | ORM  | Prisma |
 | Database  | Postgresql  |
 | UI framework | Chakra UI |
+| testing | Cypress |
+
