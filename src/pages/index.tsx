@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header from "../component/header/Header";
 import Layout from "../component/layout/Layout";
 import styles from "../styles/Home.module.css";
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 
 export default function Home() {
   return (
@@ -23,6 +24,11 @@ export default function Home() {
             </Text>
           </Heading>
 
+          <LiveProvider code="<strong>Hello World!</strong>">
+            <LiveEditor />
+            <LiveError />
+            <LivePreview />
+          </LiveProvider>
           <Text lineHeight="10" fontSize="xl">
             Get started by editing{" "}
             <code className={styles.code}>pages/index.js</code>
@@ -58,8 +64,6 @@ export default function Home() {
             </a>
           </div>
         </main>
-
-       
       </div>
     </Layout>
   );
