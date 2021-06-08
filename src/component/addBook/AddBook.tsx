@@ -21,7 +21,7 @@ const Form = ({ onCancel }) => {
     author: "",
     language: "",
     img_link: "",
-    is_translated: "false",
+    is_translated: false,
     is_available: false,
   });
 
@@ -93,7 +93,7 @@ const Form = ({ onCancel }) => {
         />
         <Checkbox
           onChange={({ target }) =>
-            setBookData({ ...bookData, is_translated: target.checked.toString() })
+            setBookData({ ...bookData, is_translated: target.checked})
           }
         >
           Translated
