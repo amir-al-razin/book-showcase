@@ -14,7 +14,7 @@ model allbooks {
   author        String  @db.VarChar(50)
   language      String  @db.VarChar(10)
   is_available  Boolean
-  is_translated String  @db.VarChar(10)
+  is_translated Boolean  
   img_link      String?
 
   @@id([id])
