@@ -18,12 +18,10 @@ interface BooksProps {
 }
 
 const Books: NextPage<BooksProps> = ({ data }) => {
-  
-
   const breakpointColumnsObj = {
     default: 5,
     1100: 4,
-    900:3,
+    900: 3,
     700: 2,
     500: 1,
   };
@@ -34,7 +32,7 @@ const Books: NextPage<BooksProps> = ({ data }) => {
   ));
 
   return (
-    <Layout >
+    <Layout>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

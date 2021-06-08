@@ -29,10 +29,7 @@ export default function Home() {
             <LiveError />
             <LivePreview />
           </LiveProvider>
-          <Text lineHeight="10" fontSize="xl">
-            Get started by editing{" "}
-            <code className={styles.code}>pages/index.js</code>
-          </Text>
+       
 
           <div className={styles.grid}>
             <a href="https://nextjs.org/docs" className={styles.card}>

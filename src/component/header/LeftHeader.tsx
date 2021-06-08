@@ -1,11 +1,12 @@
 import React from "react";
+import Link from 'next/link'
 import { Image } from "@chakra-ui/react";
 
 const LeftHeader: React.FC = () => {
   return (
-    <div>
+    <Link href="/">
       <Image src="/logo.svg" width="56" />
-    </div>
+    </Link>
   );
 };
 

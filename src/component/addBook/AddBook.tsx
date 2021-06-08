@@ -6,7 +6,6 @@ import { Stack } from "@chakra-ui/layout";
 import React, { PointerEventHandler, useState } from "react";
 import FocusLock from "react-focus-lock";
 import TextInput from "../shared/TextInput";
-import { PrismaClient } from "@prisma/client";
 import {
   Popover,
   PopoverArrow,
@@ -22,7 +21,7 @@ const Form = ({ onCancel }) => {
     author: "",
     language: "",
     img_link: "",
-    is_translated: false,
+    is_translated: "false",
     is_available: false,
   });
 
@@ -30,15 +29,25 @@ const Form = ({ onCancel }) => {
     event: React.FormEvent<HTMLInputElement | HTMLFormElement>
   ) => {
     event.preventDefault();
-    
-    console.log(bookData)
 
-    const response = await fetch("/api/book", {
+    console.log(bookData);
+
+    const response = await fetch("/api/postbook", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(bookData),
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
-    return await response.json();
+    return response;
   };
 
   return (
@@ -84,7 +93,7 @@ const Form = ({ onCancel }) => {
         />
         <Checkbox
           onChange={({ target }) =>
-            setBookData({ ...bookData, is_translated: target.checked })
+            setBookData({ ...bookData, is_translated: target.checked.toString() })
           }
         >
           Translated
