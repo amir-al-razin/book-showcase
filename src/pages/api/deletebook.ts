@@ -7,9 +7,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const prisma = new PrismaClient();
   const books = await prisma.allbooks.delete({
     where: {
-      id: 1,
+      id: 2,
     },
   });
 
-  res.json(id);
+  res.json(books);
 };

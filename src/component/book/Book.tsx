@@ -6,7 +6,7 @@ import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/react";
 import { DeleteIcon, EmailIcon } from "@chakra-ui/icons";
-
+import deletebook from "../../pages/api/deletebook";
 
 interface BookProps {
   img_link: string;
@@ -22,6 +22,26 @@ export const Book: React.FC<BookProps> = ({
   author,
 }: BookProps) => {
   // Convert array to JSX items
+
+  const deleteBook = async () => {
+    console.log("deleted book corresponding id" + id);
+    const response = await fetch("/api/deletebook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({id:id}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    return response;
+  };
 
   return (
     <>
@@ -44,10 +64,11 @@ export const Book: React.FC<BookProps> = ({
           </Box>
           {/* delete icon */}
           <IconButton
-            variant="outline"
+            variant="solid"
             colorScheme="red"
             aria-label="Send email"
             icon={<DeleteIcon />}
+            onClick={deleteBook}
           />
         </Flex>
       </Box>
