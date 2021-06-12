@@ -7,6 +7,7 @@ import { Image } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/react";
 import { DeleteIcon, EmailIcon } from "@chakra-ui/icons";
 import deletebook from "../../pages/api/deletebook";
+import EditBook from "../editBook/EditBook";
 
 interface BookProps {
   img_link: string;
@@ -53,6 +54,7 @@ export const Book: React.FC<BookProps> = ({
         backgroundColor="gray.800"
         p="3"
         className="flex flex-col m-2 flex-nowrap"
+        position="relative"
       >
         <Image src={img_link} alt={name} />
         <Flex align="center" justify="space-between">
@@ -71,6 +73,7 @@ export const Book: React.FC<BookProps> = ({
             onClick={deleteBook}
           />
         </Flex>
+        <EditBook/>
       </Box>
     </>
   );
