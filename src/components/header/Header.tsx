@@ -6,7 +6,7 @@ import RightHeader from "./RightHeader";
 
 export default function Header() {
   return (
-    <Box backgroundColor="gray.800" px="3" py="4" borderBottom="1px" borderBottomColor="gray.700">
+    <Box  px="3" py="4" borderBottom="1px" >
     <Flex direction="row" align="center" justifyContent="space-between" >
       <LeftHeader />
       <MiddleHeader />

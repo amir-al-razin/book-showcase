@@ -8,15 +8,13 @@ const MiddleHeader: React.FC = () => {
     <InputGroup maxW="3xl">
       <InputLeftElement
         pointerEvents="none"
-        children={<Search2Icon color="gray.300" />}
+        children={<Search2Icon color="" />}
       />
       <Input
         type="text"
         placeholder="Search Books "
-        backgroundColor="gray.600"
         fontWeight="semibold"
         variant="filled"
-        _hover={{backgroundColor:'gray.600'}}
        
       />
     </InputGroup>

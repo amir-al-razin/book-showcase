@@ -5,7 +5,7 @@ import { Button } from "@chakra-ui/button";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/react";
-import { DeleteIcon, EmailIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 import deletebook from "../../pages/api/deletebook";
 import EditBook from "../editBook/EditBook";
 
@@ -25,13 +25,12 @@ export const Book: React.FC<BookProps> = ({
   // Convert array to JSX items
 
   const deleteBook = async () => {
-    console.log("deleted book corresponding id" + id);
     const response = await fetch("/api/deletebook", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({id:id}),
+      body: JSON.stringify({ id: id }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -51,7 +50,6 @@ export const Book: React.FC<BookProps> = ({
         key={id}
         boxShadow="2xl"
         borderRadius="xl"
-        backgroundColor="gray.800"
         p="3"
         className="flex flex-col m-2 flex-nowrap"
         position="relative"
@@ -59,21 +57,21 @@ export const Book: React.FC<BookProps> = ({
         <Image src={img_link} alt={name} />
         <Flex align="center" justify="space-between">
           <Box mt="1">
-            <Text fontWeight="bold" color="gray.200" fontSize="xl">
+            <Text fontWeight="bold" fontSize="xl">
               {name}
             </Text>
-            <Text className="font-semibold text-gray-400">{author}</Text>
+            <Text className="font-semibold">{author}</Text>
           </Box>
           {/* delete icon */}
           <IconButton
             variant="solid"
-            colorScheme="red"
             aria-label="Send email"
+            _focus={{ outline: "none" }}
             icon={<DeleteIcon />}
             onClick={deleteBook}
           />
         </Flex>
-        <EditBook/>
+        <EditBook />
       </Box>
     </>
   );

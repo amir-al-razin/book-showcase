@@ -93,7 +93,7 @@ const Form = ({ onCancel }) => {
         />
         <Checkbox
           onChange={({ target }) =>
-            setBookData({ ...bookData, is_translated: target.checked})
+            setBookData({ ...bookData, is_translated: target.checked })
           }
         >
           Translated
@@ -137,20 +137,10 @@ const PopoverForm = () => {
             aria-label="add book"
             borderRadius="full"
             fontSize="20"
-            size="md"
-            bgColor="gray.600"
-            _hover={{
-              bgColor: "gray.500",
-            }}
             icon={<EditIcon />}
           />
         </PopoverTrigger>
-        <PopoverContent
-          boxShadow="xl"
-          backgroundColor="gray.700"
-          border="none"
-          p={5}
-        >
+        <PopoverContent boxShadow="xl" border="none" p={5}>
           <FocusLock returnFocus persistentFocus={false}>
             <PopoverArrow />
             <PopoverCloseButton />

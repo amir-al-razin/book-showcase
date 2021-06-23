@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/component/addBook/AddBook.tsx", "src/component/shared/TextInput.jsx", "src/pages/api/book.ts"  ],
+, "src/components/addBook/AddBook.tsx", "src/components/shared/TextInput.jsx", "src/pages/api/book.ts"  ],
   "exclude": [
     "node_modules"
   ]

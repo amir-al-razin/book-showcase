@@ -7,7 +7,7 @@ interface Props {
 }
 const Layout: FC<Props> = ({ children }) => {
   return (
-    <Box backgroundColor="gray.800" color="gray.300">
+    <Box >
       <Header />
       <main>{children}</main>
     </Box>
