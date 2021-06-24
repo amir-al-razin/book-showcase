@@ -1,11 +1,12 @@
 import { Box, Heading, Text } from "@chakra-ui/layout";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, useColorMode } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 import { RiMoonFill, RiSunLine, RiBook2Line } from "react-icons/ri";
 
 export default function Home() {
+  const { colorMode } = useColorMode();
   return (
     <div>
       <Head>
@@ -16,26 +17,30 @@ export default function Home() {
 
       <Flex justify="center" align="center">
         <Link href="/books">
-        <Button
-          onClick={() =>
-            toast.success("Here we gooooooooooo.....", {
-              style: {
-                border: "1px solid #48bb78",
-                padding: "16px",
-                color: "#307c50",
-              },
-              iconTheme: {
-                primary: "#48BB78",
-                secondary: "#FFFAEE",
-              },
-            })
-          }
-          leftIcon={<RiBook2Line />}
-        >
-          All Books
-        </Button>
+          <Button
+            my="3"
+            onClick={() =>
+              toast.success("Here we gooooooooooo.....", {
+                style: {
+                  border: "3px solid #48bb78",
+                  borderRadius: 5,
+                  color: "#307c50",
+                  backgroundColor: colorMode === "light" ? "#fff" : "#353535",
+                  boxShadow: "none",
+                  fontWeight: 600,
+                },
+                iconTheme: {
+                  primary: "#48BB78",
+                  secondary: "#FFFAEE",
+                },
+              })
+            }
+            leftIcon={<RiBook2Line />}
+          >
+            All Books
+          </Button>
         </Link>
-        <Toaster position="bottom-center"/>
+        <Toaster position="bottom-center" />
         <div></div>
       </Flex>
     </div>

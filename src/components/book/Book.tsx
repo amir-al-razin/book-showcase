@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
-import { IconButton } from "@chakra-ui/react";
+import { IconButton, useColorMode } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import EditBook from "../editBook/EditBook";
 import toast, { Toaster } from "react-hot-toast";
@@ -19,16 +19,16 @@ export const Book: React.FC<BookProps> = ({
   name,
   author,
 }: BookProps) => {
+  const { colorMode } = useColorMode();
   const errorToast = () => {
-    toast.error("This feature is not supported now", {
+    toast.error("This feature is currently unavailable", {
       style: {
-        border: "1px solid #48bb78",
-        padding: "16px",
-        color: "#307c50",
-      },
-      iconTheme: {
-        primary: "#48BB78",
-        secondary: "#FFFAEE",
+        border: "3px solid #f03a17",
+        borderRadius: 5,
+        color: "#f03a17",
+        backgroundColor: colorMode === "light" ? "#fff" : "#353535",
+        boxShadow: "none",
+        fontWeight: 600,
       },
     });
   };
