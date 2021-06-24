@@ -25,7 +25,7 @@ export const Book: React.FC<BookProps> = ({
       style: {
         border: "3px solid #f03a17",
         borderRadius: 5,
-        color: "#f03a17",
+        color: colorMode === "light" ? "#f03a17" : "#fff",
         backgroundColor: colorMode === "light" ? "#fff" : "#353535",
         boxShadow: "none",
         fontWeight: 600,

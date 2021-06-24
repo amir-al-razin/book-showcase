@@ -24,7 +24,7 @@ export default function Home() {
                 style: {
                   border: "3px solid #48bb78",
                   borderRadius: 5,
-                  color: "#307c50",
+                  color:colorMode === "light" ? "#307c50":"#fff",
                   backgroundColor: colorMode === "light" ? "#fff" : "#353535",
                   boxShadow: "none",
                   fontWeight: 600,
