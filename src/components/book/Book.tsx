@@ -1,13 +1,10 @@
-import { PrismaClient } from ".prisma/client";
-import { GetServerSideProps } from "next";
 import React from "react";
-import { Button } from "@chakra-ui/button";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { IconButton } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
-import deletebook from "../../pages/api/deletebook";
 import EditBook from "../editBook/EditBook";
+import toast, { Toaster } from "react-hot-toast";
 
 interface BookProps {
   img_link: string;
@@ -22,25 +19,18 @@ export const Book: React.FC<BookProps> = ({
   name,
   author,
 }: BookProps) => {
-  // Convert array to JSX items
-
-  const deleteBook = async () => {
-    const response = await fetch("/api/deletebook", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+  const errorToast = () => {
+    toast.error("This feature is not supported now", {
+      style: {
+        border: "1px solid #48bb78",
+        padding: "16px",
+        color: "#307c50",
       },
-      body: JSON.stringify({ id: id }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-
-    return response;
+      iconTheme: {
+        primary: "#48BB78",
+        secondary: "#FFFAEE",
+      },
+    });
   };
 
   return (
@@ -68,8 +58,9 @@ export const Book: React.FC<BookProps> = ({
             aria-label="Send email"
             _focus={{ outline: "none" }}
             icon={<DeleteIcon />}
-            onClick={deleteBook}
+            onClick={errorToast}
           />
+          <Toaster />
         </Flex>
         <EditBook />
       </Box>

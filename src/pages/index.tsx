@@ -1,6 +1,9 @@
 import { Box, Heading, Text } from "@chakra-ui/layout";
+import { Button, Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import Link from "next/link";
+import toast, { Toaster } from "react-hot-toast";
+import { RiMoonFill, RiSunLine, RiBook2Line } from "react-icons/ri";
 
 export default function Home() {
   return (
@@ -11,14 +14,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <Flex justify="center" align="center">
         <Link href="/books">
-          <Heading fontSize="6xl" textAlign="center">
-            All Books
-          </Heading>
+        <Button
+          onClick={() =>
+            toast.success("Here we gooooooooooo.....", {
+              style: {
+                border: "1px solid #48bb78",
+                padding: "16px",
+                color: "#307c50",
+              },
+              iconTheme: {
+                primary: "#48BB78",
+                secondary: "#FFFAEE",
+              },
+            })
+          }
+          leftIcon={<RiBook2Line />}
+        >
+          All Books
+        </Button>
         </Link>
+        <Toaster position="bottom-center"/>
         <div></div>
-      </main>
+      </Flex>
     </div>
   );
 }

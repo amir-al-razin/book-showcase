@@ -15,7 +15,6 @@ const MiddleHeader: React.FC = () => {
         placeholder="Search Books "
         fontWeight="semibold"
         variant="filled"
-       
       />
     </InputGroup>
   );

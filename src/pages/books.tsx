@@ -1,13 +1,11 @@
 import React from "react";
-import { PrismaClient } from "@prisma/client";
-import { GetServerSideProps, NextPage } from "next";
-import { Skeleton } from "@chakra-ui/react";
-import Masonry from "react-masonry-css";
+import { Skeleton, SkeletonText } from "@chakra-ui/react";
 import Book from "../components/book/Book";
-import Layout from "../components/layout/Layout";
 import useSWR from "swr";
 import { fetcher } from "../utils/fetcher";
 import _ from "lodash";
+import { NextPage } from "next";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 interface DataTypes {
   img_link: string;
@@ -19,41 +17,32 @@ interface DataTypes {
 interface BooksProps {
   data: Array<DataTypes>;
 }
-const breakpointColumnsObj = {
-  default: 5,
-  1100: 4,
-  900: 3,
-  700: 2,
-  500: 1,
-};
 const Books: NextPage<BooksProps> = () => {
   const { data, error } = useSWR("/api/book", fetcher);
 
   // Convert array to JSX items
 
   return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {!data
-        ? _.range(1, 5).map((n) => (
-            <Skeleton>
-              <div>{n}</div>
-              <div>won't be visible</div>
-            </Skeleton>
-          ))
-        : data.map(({ img_link, name, author, id }) => (
-            <Book
-              id={id}
-              key={id}
-              img_link={img_link}
-              name={name}
-              author={author}
-            />
-          ))}
-    </Masonry>
+    <ResponsiveMasonry columnsCountBreakPoints={{ 250:1,350: 1, 750: 3, 900: 5 }}>
+      <Masonry gutter="10px">
+        {!data
+          ? _.range(1, 6).map((n) => (
+              <Skeleton borderRadius="xl">
+                <SkeletonText mt="4" noOfLines={4+n} spacing="4" />
+                <SkeletonText mt="4" noOfLines={4+n} spacing="4" />
+              </Skeleton>
+            ))
+          : data.map(({ img_link, name, author, id }) => (
+              <Book
+                id={id}
+                key={id}
+                img_link={img_link}
+                name={name}
+                author={author}
+              />
+            ))}
+      </Masonry>
+    </ResponsiveMasonry>
   );
 };
 
